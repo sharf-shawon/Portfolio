@@ -19,7 +19,8 @@
         <div class="art-header">
             <!-- avatar -->
             <div class="art-avatar">
-                <a data-fancybox="avatar" href="https://graph.facebook.com/100007290403062/picture?type=large" class="art-avatar-curtain">
+                <a data-fancybox="avatar" href="https://graph.facebook.com/100007290403062/picture?type=large"
+                    class="art-avatar-curtain">
                     <img src="https://graph.facebook.com/100007290403062/picture?type=large" alt="avatar">
                     <i class="fas fa-expand"></i>
                 </a>
@@ -63,120 +64,55 @@
             <!-- divider -->
             <div class="art-ls-divider"></div>
 
+            <!-- links frame -->
+            <div class="art-links-frame p-15-15">
+
+                <!-- download cv button -->
+                <a href="{{hideConf('#')}}" id="cvb" class="art-link art-color-link text-center">Download CV <i
+                        class="fas fa-download"></i></a>
+            </div>
+            <!-- links frame end -->
+
+            <!-- divider -->
+            <div class="art-ls-divider"></div>
+
             <!-- language skills -->
             <div class="art-lang-skills p-30-15">
-
-
-                <!-- skill -->
+                @foreach (explode("|", setting('site.languages')) as $key => $item)
+                <?php $item = explode(",", $item); ?>
                 <div class="art-lang-skills-item">
-                    <div id="circleprog1" class="art-cirkle-progress"></div>
+                    <div id="circleprog{{$key}}" class="art-cirkle-progress circleprog" val="{{$item[1]}}"></div>
                     <!-- title -->
-                    <h6>French</h6>
+                    <h6>{{$item[0]}}</h6>
                 </div>
-                <!-- skill end -->
-
-                <!-- skill -->
-                <div class="art-lang-skills-item">
-                    <div id="circleprog2" class="art-cirkle-progress"></div>
-                    <!-- title -->
-                    <h6>English</h6>
-                </div>
-                <!-- skill end -->
-
-                <!-- skill -->
-                <div class="art-lang-skills-item">
-                    <div id="circleprog3" class="art-cirkle-progress"></div>
-                    <!-- title -->
-                    <h6>Spanish</h6>
-                </div>
-                <!-- skill end -->
-
+                @endforeach
             </div>
             <!-- language skills end -->
 
             <!-- divider -->
             <div class="art-ls-divider"></div>
 
-            <!-- hard skills -->
+            <!-- Programming Languages -->
             <div class="art-hard-skills p-30-15">
 
-                <!-- skill -->
+                @foreach (explode("|", setting('site.programmingLanguages')) as $key => $item)
+                <?php $item = explode(",", $item); ?>
                 <div class="art-hard-skills-item">
                     <div class="art-skill-heading">
                         <!-- title -->
-                        <h6>html</h6>
+                        <h6>{{$item[0]}}</h6>
                     </div>
                     <!-- progressbar frame -->
                     <div class="art-line-progress">
                         <!-- progressbar -->
-                        <div id="lineprog1"></div>
+                        <div id="lineprog{{$key}}" val="{{$item[1]}}" class="lineprog"></div>
                     </div>
                     <!-- progressbar frame end -->
                 </div>
-                <!-- skill end -->
-
-                <!-- skill -->
-                <div class="art-hard-skills-item">
-                    <div class="art-skill-heading">
-                        <!-- title -->
-                        <h6>CSS</h6>
-                    </div>
-                    <!-- progressbar frame -->
-                    <div class="art-line-progress">
-                        <!-- progressbar -->
-                        <div id="lineprog2"></div>
-                    </div>
-                    <!-- progressbar frame end -->
-                </div>
-                <!-- skill end -->
-
-                <!-- skill -->
-                <div class="art-hard-skills-item">
-                    <div class="art-skill-heading">
-                        <!-- title -->
-                        <h6>Js</h6>
-                    </div>
-                    <!-- progressbar frame -->
-                    <div class="art-line-progress">
-                        <!-- progressbar -->
-                        <div id="lineprog3"></div>
-                    </div>
-                    <!-- progressbar frame end -->
-                </div>
-                <!-- skill end -->
-
-                <!-- skill -->
-                <div class="art-hard-skills-item">
-                    <div class="art-skill-heading">
-                        <!-- title -->
-                        <h6>PHP</h6>
-                    </div>
-                    <!-- progressbar frame -->
-                    <div class="art-line-progress">
-                        <!-- progressbar -->
-                        <div id="lineprog4"></div>
-                    </div>
-                    <!-- progressbar frame end -->
-                </div>
-                <!-- skill end -->
-
-                <!-- skill -->
-                <div class="art-hard-skills-item">
-                    <div class="art-skill-heading">
-                        <!-- title -->
-                        <h6>Wordpress</h6>
-                    </div>
-                    <!-- progressbar frame -->
-                    <div class="art-line-progress">
-                        <!-- progressbar -->
-                        <div id="lineprog5"></div>
-                    </div>
-                    <!-- progressbar frame end -->
-                </div>
-                <!-- skill end -->
+                @endforeach
 
             </div>
-            <!-- language skills end -->
+            <!-- Programming languages end -->
 
             <!-- divider -->
             <div class="art-ls-divider"></div>
@@ -190,33 +126,21 @@
             </ul>
             <!-- knowledge list end -->
 
-            <!-- divider -->
-            <div class="art-ls-divider"></div>
-
-            <!-- links frame -->
-            <div class="art-links-frame p-15-15">
-
-                <!-- download cv button -->
-                <a href="{{setting("cv")}}" class="art-link" download>Download cv <i class="fas fa-download"></i></a>
-
-            </div>
-            <!-- links frame end -->
-
         </div>
         <!-- scroll frame end -->
 
         <!-- sidebar social -->
         <div class="art-ls-social">
             <!-- social link -->
-            <a href="{{setting("site.facebook")}}" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="{{hideConf(setting("site.facebook"))}}" target="_blank"><i class="fab fa-facebook"></i></a>
             <!-- social link -->
-            <a href="{{setting("site.linkedin")}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="{{hideConf(setting("site.linkedin"))}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             <!-- social link -->
-            <a href="{{setting("site.github")}}" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="{{hideConf(setting("site.github"))}}" target="_blank"><i class="fab fa-github"></i></a>
             <!-- social link -->
-            <a href="{{setting("site.twitter")}}" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="{{hideConf(setting("site.twitter"))}}" target="_blank"><i class="fab fa-twitter"></i></a>
             <!-- social link -->
-            <a href="{{setting("site.youtube")}}" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="{{hideConf(setting("site.youtube"))}}" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
         <!-- sidebar social end -->
 
@@ -225,3 +149,106 @@
 
 </div>
 <!-- info bar end -->
+@if (Auth::check())
+@push('scripts')
+<script>
+    $("#cvb").on("click", function(){ location.href = '/cv'; })
+    $(document).ready(function(){
+
+
+    });
+</script>
+@endpush
+@endif
+{{-- @push('scripts')
+<script>
+    $(document).ready(function(){
+
+var bar = new ProgressBar.Line(lineprog1, {
+    strokeWidth: 1.72,
+    easing: 'easeInOut',
+    duration: 1400,
+    delay: 2800,
+    trailWidth: 1.72,
+    svgStyle: {
+        width: '100%',
+        height: '100%'
+    },
+    step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * 100) + ' %');
+    }
+});
+
+bar.animate(.9);
+
+var bar = new ProgressBar.Line(lineprog2, {
+    strokeWidth: 1.72,
+    easing: 'easeInOut',
+    duration: 1400,
+    delay: 2900,
+    trailWidth: 1.72,
+    svgStyle: {
+        width: '100%',
+        height: '100%'
+    },
+    step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * 100) + ' %');
+    }
+});
+
+bar.animate(.95);
+
+var bar = new ProgressBar.Line(lineprog3, {
+    strokeWidth: 1.72,
+    easing: 'easeInOut',
+    duration: 1400,
+    delay: 3000,
+    trailWidth: 1.72,
+    svgStyle: {
+        width: '100%',
+        height: '100%'
+    },
+    step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * 100) + ' %');
+    }
+});
+
+bar.animate(.75);
+
+var bar = new ProgressBar.Line(lineprog4, {
+    strokeWidth: 1.72,
+    easing: 'easeInOut',
+    duration: 1400,
+    delay: 3100,
+    trailWidth: 1.72,
+    svgStyle: {
+        width: '100%',
+        height: '100%'
+    },
+    step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * 100) + ' %');
+    }
+});
+
+bar.animate(.65);
+
+var bar = new ProgressBar.Line(lineprog5, {
+    strokeWidth: 1.72,
+    easing: 'easeInOut',
+    duration: 1400,
+    delay: 3200,
+    trailWidth: 1.72,
+    svgStyle: {
+        width: '100%',
+        height: '100%'
+    },
+    step: (state, bar) => {
+        bar.setText(Math.round(bar.value() * 100) + ' %');
+    }
+});
+
+bar.animate(.85);
+
+    });
+</script>
+@endpush --}}

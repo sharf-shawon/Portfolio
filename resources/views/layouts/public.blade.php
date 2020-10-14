@@ -6,6 +6,25 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--  Essential META Tags -->
+    <meta name="title" content="{{$data->title ?? setting('site.title')}}">
+    <meta name="description" content="{{$data->metadescription ?? setting('site.description')}}">
+
+    <meta property="og:title" content="{{$data->title ?? setting('site.title')}}">
+    <meta property="og:description" content="{{$data->metadescription ?? setting('site.description')}}">
+    <meta property="og:image" content="{{Voyager::image($data->image ?? setting("site.shareImage"))}}">
+    <meta property="og:url" content="{{Request::url()}}">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!--  Non-Essential, But Recommended -->
+    <meta property="og:site_name" content="{{setting('site.name')}}">
+    <meta name="twitter:image:alt" content="{{setting('site.description')}}">
+
+    <!--  Non-Essential, But Required for Analytics -->
+    <meta property="fb:app_id" content="{{config('services.facebook.client_id')}}" />
+    <meta name="twitter:site" content="{{setting('site.twitter')}}">
+
     <!-- color of address bar in mobile browser -->
     <meta name="theme-color" content="#2B2B35">
     <!-- favicon  -->
@@ -16,7 +35,7 @@
     <link rel="stylesheet" href="{{asset("css/plugins/fancybox.min.css")}}">
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
     @stack('styles')
-    <title>{{setting("site.title")}}</title>
+    <title>{{$data->title ?? setting("site.title")}}</title>
 </head>
 
 <body>
@@ -40,7 +59,7 @@
                     <div class="art-curtain"></div>
 
                     <!-- top background -->
-                    <div class="art-top-bg" style="background-image: url(img/bg.jpg)">
+                    <div class="art-top-bg" style="background-image: url(img/bg.gif)">
                         <!-- overlay -->
                         <div class="art-top-bg-overlay"></div>
                         <!-- overlay end -->

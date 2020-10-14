@@ -27,51 +27,21 @@
                 <!-- menu list -->
                 <ul class="main-menu">
                     <!-- menu item -->
-                    <li class="menu-item current-menu-item"><a href="home.html">Home</a></li>
+                    <li class="menu-item {{isActive("")}}"><a href="">Home</a></li>
                     <!-- menu item -->
-                    <li class="menu-item menu-item-has-children">
-                        <a href="#.">Portfolio</a>
-                        <!-- sub menu -->
-                        <ul class="sub-menu">
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="portfolio-2-col.html">2 column</a></li>
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="portfolio-3-col.html">3 column</a></li>
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="portfolio-2-col-masonry.html">2 column
-                                    masonry</a></li>
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="portfolio-3-col-masonry.html">3 column
-                                    masonry</a></li>
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="portfolio-single.html">Single project</a>
-                            </li>
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="portfolio-single-2.html">Single project 2</a>
-                            </li>
-                        </ul>
-                        <!-- sub menu end -->
-                    </li>
+                    <li class="menu-item {{isActive("career")}}"><a href="career">Career</a></li>
                     <!-- menu item -->
-                    <li class="menu-item"><a href="history.html">History</a></li>
+                    <li class="menu-item {{isActive("contact")}}"><a href="contact">Contact</a></li>
                     <!-- menu item -->
-                    <li class="menu-item"><a href="contact">Contact</a></li>
+                    <li class="menu-item {{isActive("portfolio")}}"><a href="portfolio">Portfolio</a></li>
                     <!-- menu item -->
-                    <li class="menu-item menu-item-has-children">
-                        <a href="#.">Blog</a>
-                        <!-- sub menu -->
-                        <ul class="sub-menu">
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="blog-2-col.html">2 column</a></li>
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="blog-3-col.html">3 column</a></li>
-                            <!-- lvl 2 nav link -->
-                            <li class="menu-item"><a href="blog-post.html">Publication</a></li>
-                        </ul>
-                        <!-- sub menu end -->
-                    </li>
+                    <li class="menu-item {{isActive("blog")}}"><a href="blog">Blog</a></li>
                     <!-- menu item -->
-                    <li class="menu-item"><a href="onepage.html" target="_blank">Onepage</a></li>
+                    <li class="menu-item {{isActive("signin")}}"><a href="login">Sign In</a></li>
+                    <!-- menu item -->
+                    @if (Auth::check() && Auth::user()->hasRole('admin'))
+                    <li class="menu-item"><a href="backend" target="">Backend</a></li>
+                    @endif
                 </ul>
                 <!-- menu list end -->
             </nav>
@@ -80,9 +50,21 @@
             <!-- language change -->
             <ul class="art-language-change">
                 <!-- language item -->
-                <li><a href="#.">FR</a></li>
+                @auth
+                <li>
+                    <a>{{Auth::user()->name}}</a>
+                </li>
+                <li>
+                    <a href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+                @else
+                <li class="art-active-lang"><a href="/signin">Sign In</a></li>
+                @endauth
                 <!-- language item -->
-                <li class="art-active-lang"><a href="#.">EN</a></li>
             </ul>
             <!-- language change end -->
 

@@ -10,7 +10,7 @@
         <div class="col-lg-12">
 
             <!-- banner -->
-            <div class="art-a art-banner" style="background-image: url(img/bg.jpg)">
+            <div class="art-a art-banner" style="background-image: url(img/bg.gif)">
                 <!-- banner back -->
                 <div class="art-banner-back"></div>
                 <!-- banner dec -->
@@ -20,7 +20,7 @@
                     <!-- main title -->
                     <div class="art-banner-title">
                         <!-- title -->
-                        <h1 class="mb-15">{{setting("site.headerText")}}</h1>
+                        <h1 class="mb-15">{{ setting("site.headerText") }}</h1>
                         <!-- suptitle -->
                         <div class="art-lg-text art-code mb-25">&lt;<i>code</i>&gt; I Love
                             <span class="txt-rotate" data-period="2000"
@@ -28,12 +28,14 @@
                         </div>
                         <div class="art-buttons-frame">
                             <!-- button -->
-                            <a href="{{setting("site.ctaLink")}}" class="art-btn art-btn-md"><span>{{setting("site.ctaText")}}</span></a>
+                            <a href="{{hideConf(setting("site.ctaLink"))}}"
+                                class="art-btn art-btn-md"><span>{{setting("site.ctaText")}}</span></a>
                         </div>
                     </div>
                     <!-- main title end -->
                     <!-- photo -->
-                    <img src="{{Voyager::image(setting("site.headerImage"))}}" class="art-banner-photo" alt="{{setting("site.name")}}">
+                    <img src="{{Voyager::image(setting("site.headerImage"))}}" class="art-banner-photo"
+                        alt="{{setting("site.name")}}">
                 </div>
                 <!-- banner overlay end -->
             </div>
@@ -49,9 +51,32 @@
 
 <!-- container -->
 <div class="container-fluid">
-
     <!-- row -->
     <div class="row p-30-0">
+        <div class="col-md-12">
+            <div class="art-a art-service-icon-box">
+                <!-- service content -->
+                <div class="art-service-ib-content">
+                    <!-- title -->
+                    <h5 class="mb-15">About Me</h5>
+                    <!-- text -->
+                    <div class="mb-15 text-white">
+                        {!! setting('site.about') !!}
+                    </div>
+                    <!-- button -->
+                </div>
+                <!-- service content end -->
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- container end -->
+
+<div class="container-fluid text-center">
+
+    <!-- row -->
+    <div class="row p-20-0">
 
         <!-- col -->
         <div class="col-md-3 col-6">
@@ -61,7 +86,8 @@
                 <!-- counter -->
                 <div class="art-counter-box">
                     <!-- counter number -->
-                    <span class="art-counter">{{setting("site.experience")}}</span><span class="art-counter-plus">+</span>
+                    <span class="art-counter">{{setting("site.experience")}}</span><span
+                        class="art-counter-plus">+</span>
                 </div>
                 <!-- counter end -->
                 <!-- title -->
@@ -118,7 +144,8 @@
                 <!-- counter -->
                 <div class="art-counter-box">
                     <!-- counter number -->
-                    <span class="art-counter">{{setting("site.achievements")}}</span><span class="art-counter-plus">+</span>
+                    <span class="art-counter">{{setting("site.achievements")}}</span><span
+                        class="art-counter-plus">+</span>
                 </div>
                 <!-- counter end -->
                 <!-- title -->

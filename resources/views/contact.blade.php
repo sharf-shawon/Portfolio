@@ -24,6 +24,27 @@
 
         </div>
         <!-- col end -->
+
+        <!-- col -->
+        <div class="col-lg-4">
+            <!-- contact card -->
+            <div class="art-a art-card">
+                <div class="art-table p-15-15">
+                    <ul>
+                        <li>
+                            <h6>Name:</h6><span>{{setting('site.name')}}</span>
+                        </li>
+                        <li>
+                            <h6>Designation:</h6><span>{{setting('site.designation')}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- contact card end -->
+
+        </div>
+        <!-- col end -->
+
         <!-- col -->
         <div class="col-lg-4">
             <!-- contact card -->
@@ -49,39 +70,15 @@
                 <div class="art-table p-15-15">
                     <ul>
                         <li>
-                            <h6>Email:</h6><span>{!! Auth::check() ? setting('site.email') : "<a href='/login'>Click to Reveal</a>" !!}</span>
+                            <h6>Email:</h6><span>{!! hideConf(setting('site.email'), true) !!}</span>
                         </li>
                         <li>
-                            <h6>Phone:</h6><span>{!! Auth::check() ? setting('site.phone') : "<a href='/login'>Click to Reveal</a>" !!}</span>
+                            <h6>Phone:</h6><span>{!! hideConf(setting('site.phone'), true) !!}</span>
                         </li>
                     </ul>
                 </div>
             </div>
             <!-- contact card end -->
-        </div>
-        <!-- col end -->
-        <!-- col -->
-
-        lala <label for=""></label>
-        <div class="col-lg-4">
-            <!-- contact card -->
-            <div class="art-a art-card">
-                <div class="art-table p-15-15">
-                    <ul>
-                        <li>
-                            <h6>Support service:</h6><span>+78 (098) 333 11 22</span>
-                        </li>
-                        <li>
-                            <h6>Office:</h6><span>+78 (098) 326 11 22</span>
-                        </li>
-                        <li>
-                            <h6>Personal:</h6><span>+78 (077) 114 26 53</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- contact card end -->
-
         </div>
         <!-- col end -->
 
