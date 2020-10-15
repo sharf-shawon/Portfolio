@@ -25,7 +25,7 @@
             <!-- timeline -->
             <div class="art-timeline art-gallery">
 
-                @foreach (App\History::where('category', 'education')->where('active', true)->get() as $item)
+                @foreach (App\History::where('category', 'education')->where('active', true)->orderBy('start', 'desc')->get() as $item)
                 <div class="art-timeline-item">
                     <div class="art-timeline-mark-light"></div>
                     <div class="art-timeline-mark"></div>
@@ -113,7 +113,7 @@
             <!-- timeline -->
             <div class="art-timeline">
 
-                @foreach (App\History::where('category', 'work')->where('active', true)->get() as $item)
+                @foreach (App\History::where('category', 'work')->where('active', true)->orderBy('start', 'desc')->get() as $item)
                 <div class="art-timeline-item">
                     <div class="art-timeline-mark-light"></div>
                     <div class="art-timeline-mark"></div>

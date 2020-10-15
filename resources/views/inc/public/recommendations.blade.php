@@ -1,3 +1,4 @@
+@if (App\Recommendation::where('active', true)->count())
 <!-- container -->
 <div class="container-fluid">
 
@@ -117,3 +118,4 @@
 
 </div>
 <!-- container end -->
+@endif

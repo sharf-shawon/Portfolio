@@ -161,7 +161,7 @@
 
 </div>
 <!-- container end -->
-@include('inc.public.services')
+@include('inc.public.hobbies')
 @include('inc.public.recommendations')
 @include('inc.public.brands')
 

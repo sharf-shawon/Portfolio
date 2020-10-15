@@ -3,43 +3,70 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 
 <head>
-    <!-- Required meta tags -->
+
+    <title>{{$data->title ?? setting("site.title")}}</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!--  Essential META Tags -->
     <meta name="title" content="{{$data->title ?? setting('site.title')}}">
+    <meta name="keywords" content="{{$data->metatags ?? setting('site.metatags')}}">
     <meta name="description" content="{{$data->metadescription ?? setting('site.description')}}">
-
     <meta property="og:title" content="{{$data->title ?? setting('site.title')}}">
     <meta property="og:description" content="{{$data->metadescription ?? setting('site.description')}}">
     <meta property="og:image" content="{{Voyager::image($data->image ?? setting("site.shareImage"))}}">
     <meta property="og:url" content="{{Request::url()}}">
     <meta name="twitter:card" content="summary_large_image">
-
-    <!--  Non-Essential, But Recommended -->
     <meta property="og:site_name" content="{{setting('site.name')}}">
     <meta name="twitter:image:alt" content="{{setting('site.description')}}">
-
-    <!--  Non-Essential, But Required for Analytics -->
     <meta property="fb:app_id" content="{{config('services.facebook.client_id')}}" />
     <meta name="twitter:site" content="{{setting('site.twitter')}}">
-
-    <!-- color of address bar in mobile browser -->
     <meta name="theme-color" content="#2B2B35">
-    <!-- favicon  -->
-    <link rel="shortcut icon" href="{{asset("img/thumbnail.ico")}}" type="image/x-icon">
-    <link rel="stylesheet" href="{{asset("css/plugins/bootstrap.min.css")}}">
-    <link rel="stylesheet" href="{{asset("css/plugins/font-awesome.min.css")}}">
-    <link rel="stylesheet" href="{{asset("css/plugins/swiper.min.css")}}">
-    <link rel="stylesheet" href="{{asset("css/plugins/fancybox.min.css")}}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{asset("favicons/ms-icon-144x144.png")}}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{asset("favicons/apple-icon-57x57.png")}}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{asset("favicons/apple-icon-60x60.png")}}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{asset("favicons/apple-icon-72x72.png")}}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset("favicons/apple-icon-76x76.png")}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{asset("favicons/apple-icon-114x114.png")}}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{asset("favicons/apple-icon-120x120.png")}}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{asset("favicons/apple-icon-144x144.png")}}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{asset("favicons/apple-icon-152x152.png")}}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{asset("favicons/apple-icon-180x180.png")}}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{asset("favicons/android-icon-192x192.png")}}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{asset("favicons/favicon-32x32.png")}}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{asset("favicons/favicon-96x96.png")}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset("favicons/favicon-16x16.png")}}">
+    <link rel="manifest" href="{{asset("favicons/manifest.json")}}">
+
     <link rel="stylesheet" href="{{asset("css/style.css")}}">
     @stack('styles')
-    <title>{{$data->title ?? setting("site.title")}}</title>
 </head>
 
 <body>
 
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v8.0'
+        });
+      };
+
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat" attribution=setup_tool page_id="109067674101893" theme_color="#FFC107"
+        logged_in_greeting="Hello! Welcome to my website!" logged_out_greeting="Hello! Welcome to my website!">
+    </div>
     <!-- app -->
     <div class="art-app">
 
@@ -115,18 +142,7 @@
         <!-- preloader end -->
 
     </div>
-    <!-- app end -->
-    <script src="{{asset("js/plugins/jquery.min.js")}}"></script>
-    <script src="{{asset("js/plugins/anime.min.js")}}"></script>
-    <script src="{{asset("js/plugins/swiper.min.js")}}"></script>
-    <script src="{{asset("js/plugins/progressbar.min.js")}}"></script>
-    <script src="{{asset("js/plugins/smooth-scrollbar.min.js")}}"></script>
-    <script src="{{asset("js/plugins/overscroll.min.js")}}"></script>
-    <script src="{{asset("js/plugins/typing.min.js")}}"></script>
-    <script src="{{asset("js/plugins/isotope.min.js")}}"></script>
-    <script src="{{asset("js/plugins/fancybox.min.js")}}"></script>
-    <script src="{{asset("js/plugins/swup.min.js")}}"></script>
-    <script src="{{asset("js/main.js")}}"></script>
+    <!-- app end -->    <script src="{{asset("js/main.js")}}"></script>
     @stack('scripts')
 </body>
 

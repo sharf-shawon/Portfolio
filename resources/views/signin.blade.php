@@ -16,7 +16,7 @@
                 <!-- title frame -->
                 <div class="art-title-frame">
                     <!-- title -->
-                    <h4>Please Login</h4>
+                    <h4>Please Sign In to Continue</h4>
                 </div>
                 <!-- title frame end -->
             </div>

@@ -27,21 +27,25 @@
                 <!-- menu list -->
                 <ul class="main-menu">
                     <!-- menu item -->
-                    <li class="menu-item {{isActive("")}}"><a href="">Home</a></li>
+                    <li class="menu-item {{isActive("")}}"><a href="{{url("/")}}">Home</a></li>
                     <!-- menu item -->
-                    <li class="menu-item {{isActive("career")}}"><a href="career">Career</a></li>
+                    <li class="menu-item {{isActive("career")}}"><a href="{{url("career")}}">Career</a></li>
                     <!-- menu item -->
-                    <li class="menu-item {{isActive("contact")}}"><a href="contact">Contact</a></li>
+                    <li class="menu-item {{isActive("contact")}}"><a href="{{url("contact")}}">Contact</a></li>
                     <!-- menu item -->
-                    <li class="menu-item {{isActive("portfolio")}}"><a href="portfolio">Portfolio</a></li>
+                    <li class="menu-item {{isActive("portfolio")}}"><a href="{{url("portfolio")}}">Portfolio</a></li>
                     <!-- menu item -->
-                    <li class="menu-item {{isActive("blog")}}"><a href="blog">Blog</a></li>
+                    <li class="menu-item {{isActive("blog")}}"><a href="{{url("blog")}}">Blog</a></li>
+                    @guest
+                    <li class="menu-item {{isActive("signin")}}"><a href="{{url("signin")}}">Sign In</a></li>
+                    @endauth
                     <!-- menu item -->
-                    <li class="menu-item {{isActive("signin")}}"><a href="login">Sign In</a></li>
                     <!-- menu item -->
                     @if (Auth::check() && Auth::user()->hasRole('admin'))
-                    <li class="menu-item"><a href="backend" target="">Backend</a></li>
+                    <li class="menu-item"><a href="{{url("backend")}}" target="">Backend</a></li>
                     @endif
+                    <!-- menu item -->
+                    <li class="menu-item {{isActive("privacy-policy")}}"><a href="{{url("privacy-policy")}}">Privacy Policy</a></li>
                 </ul>
                 <!-- menu list end -->
             </nav>

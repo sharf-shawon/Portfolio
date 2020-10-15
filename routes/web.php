@@ -21,17 +21,23 @@ use Illuminate\Support\Facades\Storage;
 |
 */
 
+Route::get('/link/storage', function () {
+    Artisan::call('storage:link');
+});
 Route::get('/', function () {
     return view('index');
 });
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::get('/privacy-policy', function () {
+    return view('privacy');
+});
 Route::get('/signin', function () {
     return view('signin');
-});
+})->middleware('guest');
 Route::get('/career', function () {
-    return view('career');
+        return Auth::check() ? view('career') : redirect('signin');
 });
 Route::get('/portfolio', function () {
     return view('portfolio');
@@ -74,11 +80,11 @@ Route::get('/cv', function (Request $request) {
     $user = User::find(Auth::id());
     $user->downloaded += 1;
     $user->save();
-    // Mail::to(setting('admin.email'))->send(new CVDownloaded($user));
+    Mail::to(setting('admin.email'))->send(new CVDownloaded($user));
     return response()->download(public_path(setting("site.cvFilePath")), null, ['location' => ("/contact")]);
 });
 
-Auth::routes();
+Auth::routes(['register' => false, 'login' => false]);
 Route::group(['prefix' => 'backend'], function () {
     Voyager::routes();
 });
