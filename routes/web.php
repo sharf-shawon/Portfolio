@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Storage;
 
 Route::get('/link/storage', function () {
     Artisan::call('storage:link');
+    //ln -s /home2/shawon/Portfolio/storage/app/public /home2/shawon/public_html/storage
 });
 Route::get('/', function () {
     return view('index');
